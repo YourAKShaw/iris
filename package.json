@@ -1,0 +1,57 @@
+{
+  "name": "iris",
+  "version": "1.0.0",
+  "description": "Iris turns a company website into a cited research brief and three personalized outreach drafts. Every fact is checked against the source page before an email can use it.",
+  "license": "MIT",
+  "author": "Ayush Kumar Shaw",
+  "homepage": "https://github.com/YourAKShaw/iris#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YourAKShaw/iris.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YourAKShaw/iris/issues"
+  },
+  "keywords": [
+    "lead-research",
+    "outreach",
+    "ai-agent",
+    "llm",
+    "founder-tools",
+    "nayamanas"
+  ],
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "bin": {
+    "iris": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "public"
+  ],
+  "scripts": {
+    "dev": "tsx src/cli.ts",
+    "dev:serve": "tsx watch src/cli.ts serve",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/cli.js serve",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "node --import tsx --test --test-reporter=spec \"test/**/*.test.ts\"",
+    "check": "npm run typecheck && npm run lint && npm test",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.5",
+    "eslint": "^10.13.0",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.2"
+  }
+}

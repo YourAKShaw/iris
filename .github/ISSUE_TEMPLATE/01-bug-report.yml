@@ -1,0 +1,47 @@
+name: Bug report
+description: Something in Iris fails, crashes, or produces wrong output.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Search existing issues first. Remove API keys, private URLs and personal data from everything you paste. Report security problems privately through the Security tab instead.
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where did it happen?
+      options:
+        - CLI (iris <url>)
+        - Web app (iris serve or a deployment)
+        - Deployment / configuration
+        - Tests or CI
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: The exact command or the inputs you used. Include the target website if it is public.
+      placeholder: iris example.com --to "Name, Role"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the error message. For CLI runs, `IRIS_DEBUG=1` prints operator detail; check it for secrets before pasting.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Iris version (`iris --version` or commit), Node.js version, OS, LLM_PROVIDER and LLM_MODEL.
+    validations:
+      required: true

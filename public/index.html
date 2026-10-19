@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iris: cited lead research and outreach drafts</title>
+    <meta
+      name="description"
+      content="Paste a company website. Iris reads it, keeps only claims it can quote word for word, and drafts three first-touch emails from them."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the form</a>
+    <header class="masthead">
+      <a class="wordmark" href="/" aria-label="Iris home">
+        <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" class="glyph-ring" />
+          <circle cx="16" cy="16" r="8" class="glyph-iris" />
+          <circle cx="16" cy="16" r="3.5" class="glyph-pupil" />
+        </svg>
+        <span>Iris</span>
+      </a>
+      <p class="byline">
+        Built by <a href="https://github.com/YourAKShaw/iris">NayaManas</a>, open source on
+        <a href="https://github.com/YourAKShaw/iris">GitHub</a>
+      </p>
+    </header>
+
+    <main id="main">
+      <section class="intro" aria-labelledby="headline">
+        <h1 id="headline">Cold emails built on facts you can check.</h1>
+        <p class="lede">
+          Paste a company’s website. Iris reads up to four of its pages, keeps only the claims it can quote word for
+          word, and writes three first-touch emails from them.
+        </p>
+
+        <form id="run-form" class="run-form" novalidate>
+          <div class="field">
+            <label for="url">Company website</label>
+            <div class="url-row">
+              <input
+                id="url"
+                name="url"
+                type="text"
+                inputmode="url"
+                autocomplete="url"
+                autocapitalize="off"
+                spellcheck="false"
+                placeholder="acme.com"
+                maxlength="2048"
+                required
+              />
+              <button type="submit" id="submit" class="primary">Research</button>
+            </div>
+          </div>
+
+          <div class="field-pair">
+            <div class="field">
+              <label for="recipient">Who it’s for <span class="optional">(optional)</span></label>
+              <input id="recipient" name="recipient" type="text" placeholder="Priya Rao, Head of Growth" maxlength="120" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="offer">What you’re offering</label>
+              <textarea id="offer" name="offer" rows="3" maxlength="500"></textarea>
+            </div>
+          </div>
+
+          <p class="examples">
+            Or try
+            <button type="button" class="example" data-url="linear.app">linear.app</button>,
+            <button type="button" class="example" data-url="posthog.com">posthog.com</button> or
+            <button type="button" class="example" data-url="resend.com">resend.com</button>.
+          </p>
+        </form>
+      </section>
+
+      <ol id="log" class="log" aria-live="polite" aria-label="Progress"></ol>
+      <div id="error" class="error" role="alert" hidden></div>
+
+      <section id="results" class="results" aria-labelledby="company-name" hidden>
+        <header class="company">
+          <h2 id="company-name"></h2>
+          <p id="company-line" class="company-line"></p>
+        </header>
+
+        <div class="columns">
+          <section class="evidence" aria-labelledby="evidence-title">
+            <h3 id="evidence-title">What Iris verified</h3>
+            <p id="evidence-note" class="note"></p>
+            <ol id="facts" class="facts"></ol>
+            <div id="dropped"></div>
+            <div id="guesses" hidden>
+              <h3>Educated guesses</h3>
+              <p class="note">Inferences from the facts above. Treat them as questions, not claims.</p>
+              <ul id="hypotheses" class="hypotheses"></ul>
+            </div>
+          </section>
+
+          <section class="drafts" aria-labelledby="drafts-title">
+            <div class="drafts-head">
+              <h3 id="drafts-title">Drafts</h3>
+              <button id="download" type="button" class="quiet">Download brief</button>
+            </div>
+            <div id="tabs" class="tabs" role="tablist" aria-label="Email drafts"></div>
+            <div id="panels"></div>
+            <p id="warnings" class="note warn" hidden></p>
+          </section>
+        </div>
+
+        <footer id="run-meta" class="run-meta"></footer>
+      </section>
+    </main>
+
+    <footer class="page-foot">
+      <p>
+        Iris reads public pages and never sends email. An AI model writes the drafts, so read them before you send
+        anything. <span id="quota"></span>
+      </p>
+      <p><a href="https://github.com/YourAKShaw/iris#-quick-start">Run Iris on your own machine</a></p>
+    </footer>
+  </body>
+</html>

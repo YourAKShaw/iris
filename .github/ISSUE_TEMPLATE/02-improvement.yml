@@ -1,0 +1,33 @@
+name: Improvement proposal
+description: Propose a feature, a better prompt, a new provider preset, or a quality improvement.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: Search existing issues first. Focus on a concrete outreach or research use case.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or unmet use case
+      description: Who runs into this, and what happens today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: The behavior you want, and which parts of Iris it touches (fetching, research, verification, drafting, CLI, web app).
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Trade-offs
+      description: Consider token cost on free tiers, latency, new dependencies, and whether it weakens grounding or security.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: How to verify it
+      description: An example input and the observable result that would show it works. Do not invent benchmark results.
+    validations:
+      required: true

@@ -1,0 +1,21 @@
+name: Documentation correction
+description: Report unclear instructions, broken links, or outdated provider details.
+labels: [documentation]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: File, section, or link
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong or unclear?
+      description: Quote only the relevant passage. Free-tier limits and model names change often; link the provider page if you are reporting one.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction or supporting source
