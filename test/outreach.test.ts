@@ -48,6 +48,24 @@ describe('parseRecipient', () => {
   it('splits name and role', () => {
     assert.deepEqual(parseRecipient('Priya Rao, Head of Growth'), { name: 'Priya Rao', role: 'Head of Growth', firstName: 'Priya' });
   });
+  it('skips common honorifics with or without periods', () => {
+    for (const title of ['Dr', 'Mr', 'Mrs', 'Ms', 'Prof']) {
+      for (const suffix of ['', '.']) {
+        assert.deepEqual(parseRecipient(`${title}${suffix} Jane Doe, Director`), {
+          name: `${title}${suffix} Jane Doe`,
+          role: 'Director',
+          firstName: 'Jane',
+        });
+      }
+    }
+  });
+  it('handles case-insensitive and consecutive honorifics', () => {
+    assert.equal(parseRecipient('DR. PROF. Jane Doe').firstName, 'Jane');
+    assert.equal(parseRecipient('ms jane doe').firstName, 'jane');
+  });
+  it('does not use an honorific alone as a first name', () => {
+    assert.equal(parseRecipient('Dr.').firstName, undefined);
+  });
   it('handles a name only', () => {
     assert.deepEqual(parseRecipient('Priya'), { name: 'Priya', role: undefined, firstName: 'Priya' });
   });

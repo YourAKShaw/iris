@@ -54,7 +54,7 @@ export function parseRecipient(raw: string | undefined): Recipient {
   const [namePart, ...rest] = value.split(',');
   const name = namePart?.trim() || undefined;
   const role = rest.join(',').trim() || undefined;
-  const firstName = name?.split(' ')[0];
+  const firstName = name?.split(' ').find((part) => !/^(?:dr|mr|mrs|ms|prof)\.?$/i.test(part));
   return { name, role, firstName };
 }
 
